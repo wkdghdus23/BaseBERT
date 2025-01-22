@@ -166,8 +166,8 @@ Perform the `downstream` training task with the following parameters:
 ### Model Performance
 The performance of the BaseBERT was evaluated on the prediction of HOMO and LUMO values. The scatter plots below illustrate the correlation between the calculated and predicted values for the HOMO and LUMO.
    - **HOMO Prediction (Left):**
-      - R² score: 0.904
-      - MAE: 145 meV
+      - R² score: 0.924
+      - MAE: 126 meV
    - **LUMO Prediction (Right):**
       - R² score: 0.982
       - MAE: 125 meV
