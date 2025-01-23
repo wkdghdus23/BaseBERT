@@ -80,13 +80,13 @@ If you are using a virtual environment (e.g., with Miniconda), you can set the `
    - **Step 1**. Create an activation script that sets the `PYTHONPATH` every time the environment is activated:
    ```bash
    mkdir -p $CONDA_PREFIX/etc/conda/activate.d
-   echo "unset PYTHONPATH" >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
-   echo "export PYTHONPATH=$PYTHONPATH:(path/to/your/package)/BaseBERT/" >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+   echo 'unset PYTHONPATH' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+   echo 'export PYTHONPATH=$PYTHONPATH:(path/to/your/package)/BaseBERT/' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
    ```
    - **Step 2**. Create a deactivation script to unset `PYTHONPATH` when the environment is deactivated:
    ```bash
    mkdir -p $CONDA_PREFIX/etc/conda/deactivate.d
-   echo "unset PYTHONPATH" >> $CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh
+   echo 'unset PYTHONPATH' >> $CONDA_PREFIX/etc/conda/deactivate.d/env_vars.sh
    ```
    This will make sure that the `PYTHONPATH` variable is cleared when the environment is deactivated, preventing any unwanted effect on other environments or system-level Python sessions.
    - **Step 3**. Restart your virtual environment
@@ -135,9 +135,9 @@ Before running the examples, move to the example directory, which contains the Q
    ```
 
 ### Task 1. Train the Masked Language Model (MLM) using the QM9 dataset
-In this example, you will train a Masked Language Model (MLM) using the QM9 dataset. The MLM task involves masking certain parts of the input data and training the model to predict these masked parts. This helps the model learn contextual embeddings for chemical structures, which can be useful for downstream tasks.
+In this example, you will train a Masked Language Model (MLM) using the QM9 dataset. The MLM task involves masking certain parts of the input data and training the model to predict these masked parts. This helps the model learn contextual embeddings for chemical structures, which can be useful for `downstream` tasks.
 
-Perform the training task with the following parameters:
+Perform the `mlm` training task with the following parameters:
 
    - **Masking ratio**: 15% of the tokens are masked.
    - **Maxumum length**: 256 of maxumum sequence length for tokenization.
@@ -149,9 +149,9 @@ Perform the training task with the following parameters:
    ```
 
 ### Task 2. Load pre-trained MLM and train the downstream model (HOMO and LUMO values in QM9 dataset)
-After training the MLM, you can use it for downstream tasks. In this example, you will load the pre-trained MLM and train a downstream model to predict the HOMO and LUMO values in the QM9 dataset.
+After training the `mlm`, you can use it for `downstream` tasks. In this example, you will load the pre-trained MLM and train a `downstream` model to predict the HOMO and LUMO values in the QM9 dataset.
 
-Perform the downstream training task with the following parameters:
+Perform the `downstream` training task with the following parameters:
 
    - **Target**: HOMO and LUMO values.
    - **Maxumum length**: 256 of maxumum sequence length for tokenization.
@@ -166,8 +166,8 @@ Perform the downstream training task with the following parameters:
 ### Model Performance
 The performance of the BaseBERT was evaluated on the prediction of HOMO and LUMO values. The scatter plots below illustrate the correlation between the calculated and predicted values for the HOMO and LUMO.
    - **HOMO Prediction (Left):**
-      - R² score: 0.904
-      - MAE: 145 meV
+      - R² score: 0.924
+      - MAE: 126 meV
    - **LUMO Prediction (Right):**
       - R² score: 0.982
       - MAE: 125 meV
